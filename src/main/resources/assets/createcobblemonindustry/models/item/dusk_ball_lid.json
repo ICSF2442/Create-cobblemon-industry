@@ -1,0 +1,6 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "createcobblemonindustry:item/dusk_ball_lid"
+  }
+}
