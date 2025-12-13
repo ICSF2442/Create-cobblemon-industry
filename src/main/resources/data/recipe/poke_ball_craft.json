@@ -1,0 +1,53 @@
+{
+  "type": "create:sequenced_assembly",
+  "ingredient": {
+    "item": "create_cobblemon_industry:red_ball_lid"
+  },
+  "transitionalItem": {
+    "item": "create_cobblemon_industry:incomplete_poke_ball"
+  },
+  "sequence": [
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "create_cobblemon_industry:incomplete_poke_ball"
+        },
+        [
+          {
+            "item": "create_cobblemon_industry:iron_ball_base"
+          }
+        ]
+      ],
+      "results": [
+        {
+          "item": "create_cobblemon_industry:incomplete_poke_ball"
+        }
+      ]
+    },
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "create_cobblemon_industry:incomplete_poke_ball"
+        },
+        [
+          {
+            "item": "create:copper_nugget"
+          }
+        ]
+      ],
+      "results": [
+        {
+          "item": "create_cobblemon_industry:incomplete_poke_ball"
+        }
+      ]
+    }
+  ],
+  "results": [
+    {
+      "item": "cobblemon:poke_ball"
+    }
+  ],
+  "loops": 1
+}

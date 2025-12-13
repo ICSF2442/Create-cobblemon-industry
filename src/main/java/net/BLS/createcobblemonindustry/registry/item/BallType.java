@@ -1,4 +1,4 @@
-package net.BLS.createcobblemonindustry.item;
+package net.BLS.createcobblemonindustry.registry.item;
 
 public enum BallType {
 

@@ -1,9 +1,12 @@
 package net.BLS.createcobblemonindustry;
 
 import com.mojang.logging.LogUtils;
-import net.BLS.createcobblemonindustry.item.CreateCobblemonIndustryCreativeModTabs;
-import net.BLS.createcobblemonindustry.item.CreateCobblemonIndustryModItems;
-import net.minecraft.world.item.CreativeModeTabs;
+import net.BLS.createcobblemonindustry.registry.fluid.CreateCobblemonIndustryModFluids;
+import net.minecraft.core.registries.Registries;
+import net.BLS.createcobblemonindustry.registry.creative.CreateCobblemonIndustryCreativeModTabs;
+import net.BLS.createcobblemonindustry.registry.CreateCobblemonIndustryRegistrate;
+import net.BLS.createcobblemonindustry.registry.item.CreateCobblemonIndustryModItems;
+import net.minecraft.world.item.CreativeModeTab;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -16,11 +19,13 @@ import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 import net.neoforged.neoforge.event.server.ServerStartingEvent;
+import net.neoforged.neoforge.registries.DeferredRegister;
 import org.slf4j.Logger;
 
 // The value here should match an entry in the META-INF/neoforge.mods.toml file
 @Mod(CreateCobblemonIndustry.MODID)
-public class CreateCobblemonIndustry {
+public class CreateCobblemonIndustry{
+    public static final String ID = "createcobblemonindustry";
     // Define mod id in a common place for everything to reference
     public static final String MODID = "createcobblemonindustry";
     // Directly reference a slf4j logger
@@ -38,7 +43,10 @@ public class CreateCobblemonIndustry {
         // Do not add this line if there are no @SubscribeEvent-annotated functions in this class, like onServerStarting() below.
         NeoForge.EVENT_BUS.register(this);
 
-        CreateCobblemonIndustryModItems.register(modEventBus);
+        CreateCobblemonIndustryModItems.register();
+        //CreateCobblemonIndustryModFluids.register();
+
+        CREATIVE_TABS.register(modEventBus);
 
         CreateCobblemonIndustryCreativeModTabs.register(modEventBus);
 
@@ -60,6 +68,9 @@ public class CreateCobblemonIndustry {
 
     }
 
+    private static final DeferredRegister<CreativeModeTab> CREATIVE_TABS =
+            DeferredRegister.create(Registries.CREATIVE_MODE_TAB, ID);
+
     // You can use SubscribeEvent and let the Event Bus discover methods to call
     @SubscribeEvent
     public void onServerStarting(ServerStartingEvent event) {
@@ -74,4 +85,12 @@ public class CreateCobblemonIndustry {
 
         }
     }
+
+    public static final CreateCobblemonIndustryRegistrate REGISTRATE =
+            CreateCobblemonIndustryRegistrate.create(MODID);
+
+    public static CreateCobblemonIndustryRegistrate registrate() {
+        return REGISTRATE;
+    }
+
 }
