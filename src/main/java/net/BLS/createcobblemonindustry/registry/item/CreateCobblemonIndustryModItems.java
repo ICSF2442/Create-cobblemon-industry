@@ -1,22 +1,33 @@
 package net.BLS.createcobblemonindustry.registry.item;
 
 import net.BLS.createcobblemonindustry.CreateCobblemonIndustry;
-import com.tterrag.registrate.util.entry.ItemEntry;
-import net.BLS.createcobblemonindustry.registry.creative.CreateCobblemonIndustryCreativeModTabs;
 import net.BLS.createcobblemonindustry.registry.CreateCobblemonIndustryRegistrate;
+
 import net.minecraft.world.item.Item;
 
+import com.tterrag.registrate.util.entry.ItemEntry;
+
+import java.util.EnumMap;
+import java.util.Map;
+
 public class CreateCobblemonIndustryModItems {
-	private static final CreateCobblemonIndustryRegistrate REGISTRATE = CreateCobblemonIndustry.registrate();
+
+	private static final CreateCobblemonIndustryRegistrate REGISTRATE =
+			CreateCobblemonIndustry.registrate();
+
+	public static final Map<BallType, ItemEntry<Item>> ITEM_MAP =
+			new EnumMap<>(BallType.class);
 
 	static {
-		REGISTRATE.setCreativeTab(CreateCobblemonIndustryCreativeModTabs.BASE_CREATIVE_TAB);
+		for (BallType type : BallType.values()) {
+			ITEM_MAP.put(type,
+					REGISTRATE
+							.item(type.getId(), Item::new)
+							.register()
+			);
+		}
 	}
 
-
-	public static final ItemEntry<Item> POKE_BALL = REGISTRATE
-			.item("poke_ball")
-			.register();
-
+	// Force class loading
 	public static void register() {}
 }

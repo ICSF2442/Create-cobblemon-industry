@@ -44,7 +44,7 @@ public class CreateCobblemonIndustry{
         NeoForge.EVENT_BUS.register(this);
 
         CreateCobblemonIndustryModItems.register();
-        //CreateCobblemonIndustryModFluids.register();
+        CreateCobblemonIndustryModFluids.register();
 
         CREATIVE_TABS.register(modEventBus);
 

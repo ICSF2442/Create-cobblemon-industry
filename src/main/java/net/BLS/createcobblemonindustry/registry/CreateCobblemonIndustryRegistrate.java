@@ -1,11 +1,15 @@
 package net.BLS.createcobblemonindustry.registry;
 
+import com.simibubi.create.foundation.data.CreateRegistrate;
 import com.tterrag.registrate.AbstractRegistrate;
+import com.tterrag.registrate.builders.FluidBuilder;
 import com.tterrag.registrate.builders.ItemBuilder;
 import com.tterrag.registrate.util.entry.RegistryEntry;
 import net.BLS.createcobblemonindustry.registry.creative.CreateCobblemonIndustryCreativeModTabs;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
+import net.neoforged.neoforge.fluids.BaseFlowingFluid;
 import net.neoforged.neoforge.registries.DeferredHolder;
 
 import javax.annotation.Nullable;
@@ -41,5 +45,11 @@ public class CreateCobblemonIndustryRegistrate extends AbstractRegistrate<Create
     public ItemBuilder<Item, CreateCobblemonIndustryRegistrate> item(String name) {
         return item(name, Item::new)
                 .properties(p -> currentTab != null ? p : p); // Extend here later
+    }
+
+    public FluidBuilder<BaseFlowingFluid.Flowing, CreateCobblemonIndustryRegistrate> standardFluid(String name,
+                                                                                  FluidBuilder.FluidTypeFactory typeFactory) {
+        return fluid(name, ResourceLocation.fromNamespaceAndPath(getModid(), "fluid/" + name + "_still"), ResourceLocation.fromNamespaceAndPath(getModid(), "fluid/" + name + "_flow"),
+                typeFactory);
     }
 }

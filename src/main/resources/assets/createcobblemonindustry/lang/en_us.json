@@ -1,6 +1,8 @@
 {
   "creativetab.createcobblemonindustry.create_cobblemon_industry_items" : "Create: Cobblemon Industry Items",
   "creativetab.createcobblemonindustry.create_cobblemon_industry_liquids" : "Create: Cobblemon Industry Liquids",
+  "creativetab.createcobblemonindustry.items": "Create: Cobblemon Industry Items",
+  "creativetab.createcobblemonindustry.fluids": "Create Cobblemon Industry Fluids",
 
   "item.createcobblemonindustry.red_ball_lid": "Red Ball Lid",
   "item.createcobblemonindustry.blue_ball_lid": "Blue Ball Lid",
